@@ -87,7 +87,7 @@ public class Goomba extends Enemy
         
         fixtureDef.filter.categoryBits = MainPlayer.ENEMY_BIT;
         fixtureDef.filter.maskBits = MainPlayer.ENEMY_BIT | MainPlayer.COIN_BIT | MainPlayer. BRICK_BIT
-        | MainPlayer.ENEMY_BIT | MainPlayer.OBJECT_BIT | MainPlayer.MARIO_BIT | MainPlayer.GROUND_BIT;
+        | MainPlayer.ENEMY_BIT | MainPlayer.OBJECT_BIT | MainPlayer.PRANAY_BIT | MainPlayer.GROUND_BIT;
         //what an enemy can collide with
 
         fixtureDef.shape = shape;
