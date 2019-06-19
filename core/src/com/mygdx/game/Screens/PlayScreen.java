@@ -98,6 +98,7 @@ public class PlayScreen implements Screen
             pranay.body.applyLinearImpulse(new Vector2(1f, 0), pranay.body.getWorldCenter(), true);
         if (Gdx.input.isKeyPressed(Input.Keys.LEFT) && pranay.body.getLinearVelocity().x >= -15)
             pranay.body.applyLinearImpulse(new Vector2(-1f, 0), pranay.body.getWorldCenter(), true);
+            //handles keyinput stuff
    }
 
     public void update(float time)
@@ -105,21 +106,28 @@ public class PlayScreen implements Screen
        handleInput(time);
 
        world.step(1/10f, 6, 2);
+       //resolution speed
 
-       pranay.update(time);
+       pranay.update(time);\
+       //calls the update method in pranay
 
        for(Enemy enemy: creator.getGoombas())
        {
             enemy.update(time);
        }
+       //adds enemies to the world
 
        hud.update(time);
-
+       //updates the world
 
        gameCam.position.x = pranay.body.getPosition().x;
+       //sets the position of the camera relative to the center of the body or Pranay you can say
 
        gameCam.update();
+       //updates the camera
+       
        renderer.setView(gameCam);
+       //renders the map to the screen
     }
 
     @Override
@@ -130,12 +138,14 @@ public class PlayScreen implements Screen
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT); // actually clears the screen
 
       renderer.render();
-
+      //actually displays the map
+       
       box2DDebugRenderer.render(world, gameCam.combined);
 
       game.batch.setProjectionMatrix(gameCam.combined); //only what the game can see
       game.batch.begin();
       pranay.draw(game.batch);
+      //draws pranay to the screen
 
         for(Enemy enemy: creator.getGoombas())
         {
@@ -145,18 +155,21 @@ public class PlayScreen implements Screen
             if(enemy.getX() < pranay.getX() + 224)
                 enemy.body.setActive(true);
         }
+        //actually puts the goombas on the screen
 
       game.batch.end();
 
-        game.batch.setProjectionMatrix(hud.stage.getCamera().combined);
-        //tell the batch where our camera is on the game world and only render what the camera can see
-        hud.stage.draw();
-
+      game.batch.setProjectionMatrix(hud.stage.getCamera().combined);
+      //tell the batch where our camera is on the game world and only render what the camera can see
+      
+      hud.stage.draw();
+      //draws the hud 
     }
     @Override
     public void resize(int width, int height)
     {
-        gamePort.update(width, height); //changes the size of the viewPort when screen changes
+        gamePort.update(width, height);
+        //changes the size of the viewPort when screen changes
     }
 
     public TiledMap getMap()
@@ -192,5 +205,6 @@ public class PlayScreen implements Screen
         world.dispose();
         box2DDebugRenderer.dispose();
         hud.dispose();
+        //dispose all this stuff to save memory
     }
 }
