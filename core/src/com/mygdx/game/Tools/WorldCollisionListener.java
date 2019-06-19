@@ -35,26 +35,32 @@ public class WorldCollisionListener implements ContactListener
 
         switch (collisionDef)
         {
-            case MainPlayer.ENEMY_HEAD_BIT | MainPlayer.MARIO_BIT:
+            case MainPlayer.ENEMY_HEAD_BIT | MainPlayer.PRANAY_BIT:
                 if(fixtureA.getFilterData().categoryBits == MainPlayer.ENEMY_HEAD_BIT)
                     ((Enemy)fixtureA.getUserData()).hitOnHead();
                 else
                     ((Enemy)fixtureB.getUserData()).hitOnHead();
                 break;
                 //tests the collision between Pranay jumping on an enemy
+                
             case MainPlayer.ENEMY_BIT | MainPlayer.OBJECT_BIT:
                 if(fixtureA.getFilterData().categoryBits == MainPlayer.ENEMY_BIT)
                     ((Enemy)fixtureA.getUserData()).reverseVelocity(true, false);
                 else
                     ((Enemy)fixtureB.getUserData()).reverseVelocity(true, false);
                 break;
-            case MainPlayer.MARIO_BIT | MainPlayer.ENEMY_BIT:
-                Gdx.app.log("Mario", "Died");
+                //Tests collisions between Pranay and all objects on the map
+                
+            case MainPlayer.PRANAY_BIT | MainPlayer.ENEMY_BIT:
+                Gdx.app.log("Pranay", "Died");
                 break;
+                //If pranay collides with an enemy, and not their head, a message pops up saying that he died
+                
             case MainPlayer.ENEMY_BIT | MainPlayer.ENEMY_BIT:
                 ((Enemy)fixtureA.getUserData()).reverseVelocity(true, false);
                 ((Enemy)fixtureB.getUserData()).reverseVelocity(true, false);
                 break;
+                //If two enemies collide with each other, change their directions of movement
         }
 
 
