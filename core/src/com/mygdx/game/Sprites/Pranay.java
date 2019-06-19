@@ -54,7 +54,7 @@ public class Pranay extends Sprite
         //This is essentially the hitbox or image that the sprite will follow throughout the world. Think of it like we glue the sprite
         //to this circle and the circle is the thing that is moving
         
-        fixtureDef.filter.categoryBits = MainPlayer.MARIO_BIT;
+        fixtureDef.filter.categoryBits = MainPlayer.PRANAY_BIT;
         fixtureDef.filter.maskBits = MainPlayer.GROUND_BIT | MainPlayer.COIN_BIT | MainPlayer. BRICK_BIT
             | MainPlayer.ENEMY_BIT | MainPlayer.OBJECT_BIT | MainPlayer.ENEMY_HEAD_BIT;
         //this defines what exactly Pranay can collide with. 
