@@ -37,19 +37,25 @@ public class MainPlayer extends Game
     {
         batch = new SpriteBatch();
         playScreen = new PlayScreen(this);
-        playScreen.initializePranay();
+        playScreen.initializePranay(); 
+        //did this to resolve a nullpointer that was thrown when trying to draw pranay to the screen
+        
         playScreen.intializeCreator();
+        //did this to resolve a nullpointer that was thrown when trying to load all the goombas to the map
+        
         setScreen(playScreen);// Pass the game itself so that it can set screens in the future
 
     }
     @Override
     public void render ()
     {
-        super.render(); // delegate the render method to the PlayScreen or whatever screen is active
+        super.render();
+        // delegate the render method to the PlayScreen or whatever screen is active
     }
     @Override
     public void dispose ()
     {
         batch.dispose();
+        //gets rid of the batch as a batch is very, very memory intensive
     }
 }
