@@ -52,7 +52,8 @@ public class Hud implements Disposable
         levelLabel = new Label("1 - 1", new Label.LabelStyle(new BitmapFont(), Color.WHITE));
         worldLabel = new Label("WORLD:", new Label.LabelStyle(new BitmapFont(), Color.WHITE));
         marioLabel = new Label("Mario", new Label.LabelStyle(new BitmapFont(), Color.WHITE));
-
+        //bitmapfont is just like a 8-bit type texture on the text
+        
         table.add(marioLabel).expandX().padTop(10); // sticks the labels at the top of the screen
         //10 pixels in between each label that is what padTop does
         table.add(worldLabel).expandX().padTop(10);
@@ -73,6 +74,7 @@ public class Hud implements Disposable
             worldTimer--;
             countDownLabel.setText(String.format("%03d", worldTimer));
             timeCount = 0;
+            //decreases the time label by 1 every 1 second
         }
     }
 
@@ -80,11 +82,13 @@ public class Hud implements Disposable
     {
         score += val;
         scoreLabel.setText(String.format("%06d", score));
+        //called so that when something happens it adds to the score
     }
 
     @Override
     public void dispose()
     {
         stage.dispose();
+        //gets rid of the stage so that it doesn't take up extra space in memory
     }
 }
