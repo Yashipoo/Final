@@ -30,14 +30,17 @@ public class B2WorldCreator
         //Ground
         for(MapObject object : map.getLayers().get(2).getObjects().getByType(RectangleMapObject.class))
         {
+            //tells us what object layer we are working with
             Rectangle rect = ((RectangleMapObject) object).getRectangle();
             bodyDef.type = BodyDef.BodyType.StaticBody;
             bodyDef.position.set(rect.getX() + rect.getWidth() / 2, rect.getY() + rect.getHeight() / 2);
-
+            //creates a box around each ground object in box2D
+            
             body = world.createBody(bodyDef);
             shape.setAsBox(rect.getWidth() / 2, rect.getHeight() / 2);
             fixtureDef.shape = shape;
             body.createFixture(fixtureDef);
+            //create it and add it to the world
         }
 
         //Pipes
