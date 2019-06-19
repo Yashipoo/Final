@@ -24,6 +24,8 @@ public abstract class Enemy extends Sprite
         defEnemy();
 
         velocity = new Vector2(10, 0);
+        //speed of the enemy
+        
         //body.setActive(false);
     }
 
@@ -34,9 +36,12 @@ public abstract class Enemy extends Sprite
     public void reverseVelocity(boolean x, boolean y)
     {
         if(x)
+            //if true change x direction
             velocity.x = - velocity.x;
         if(y)
+            //if true change y direction
             velocity.y = -velocity.y;
+        //if an enemy collides with something, change its direction of movement
     }
 
 
