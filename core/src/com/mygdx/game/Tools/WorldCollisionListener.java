@@ -16,9 +16,10 @@ public class WorldCollisionListener implements ContactListener
     {
         Fixture fixtureA = contact.getFixtureA();
         Fixture fixtureB = contact.getFixtureB();
+        //defines what the two things are that are colliding
 
         int collisionDef = fixtureA.getFilterData().categoryBits | fixtureB.getFilterData().categoryBits;
-
+        //either A or B
 
         if(fixtureA.getUserData() == "head" || fixtureB.getUserData() == "head")
         {
@@ -26,7 +27,8 @@ public class WorldCollisionListener implements ContactListener
             Fixture obj = head == fixtureA ? fixtureB : fixtureA;
 
             if(obj.getUserData() != null && TileObject.class.isAssignableFrom(obj.getUserData().getClass()))
-            {//returns true if user data is TileObject
+            {
+            //returns true if user data is TileObject
                 ((TileObject)obj.getUserData()).onHeadHit();
             }
         }
@@ -39,6 +41,7 @@ public class WorldCollisionListener implements ContactListener
                 else
                     ((Enemy)fixtureB.getUserData()).hitOnHead();
                 break;
+                //tests the collision between Pranay jumping on an enemy
             case MainPlayer.ENEMY_BIT | MainPlayer.OBJECT_BIT:
                 if(fixtureA.getFilterData().categoryBits == MainPlayer.ENEMY_BIT)
                     ((Enemy)fixtureA.getUserData()).reverseVelocity(true, false);
